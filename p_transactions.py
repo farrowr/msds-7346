@@ -49,7 +49,7 @@ class Transaction(Resource):
 			else:
 				cursor.execute("select * from transactions;")
 				data = cursor.fetchall() 
-
+				return jsonify(data) 
 		except Exception as e:
 			print(e)
 
