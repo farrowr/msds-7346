@@ -37,7 +37,7 @@ class Transaction(Resource):
 	#			return transaction, 200
 	#	return "Transaction not found", 404
 
-	def get(self, Date):
+	def get(self, Employee):
 		conn = pymysql.connect("localhost","root","Adin2015","reports")
 		cursor = conn.cursor()
 		
@@ -47,9 +47,8 @@ class Transaction(Resource):
 			if(cursor.rowcount > 0):
 				return jsonify(data) 
 			else:
-				cursor.execute("select * from transactions;")
-				data = cursor.fetchall() 
-				return jsonify(data) 
+				return "Employee not found", 404
+
 		except Exception as e:
 			print(e)
 
@@ -57,5 +56,5 @@ class Transaction(Resource):
 		conn.close()
 	
 
-api.add_resource(Transaction,"/transaction/<string:Date>")
+api.add_resource(Transaction,"/transaction/<string:Employee>")
 app.run(debug=True) 
