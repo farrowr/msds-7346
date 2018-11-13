@@ -32,15 +32,13 @@ transactions = [
 
 class Transaction(Resource):
 
-	def get(self, Date):
+	def get(self, Employee):
 		conn = pymysql.connect("localhost","root","Adin2015","reports")
 		cursor = conn.cursor()
 		
 		try:
-			d = Date
-			#d = '1-16-17'
-			d = d.replace('-','/') + ' 0:00'
-			cursor.execute("select * from transactions where `Transaction Date` = '%s';" % d)
+			#test with Popola, Denise D
+			cursor.execute("select * from transactions where Employee like '%s';" % Employee)
 			data = cursor.fetchall() 
 			if(cursor.rowcount > 0):
 				return jsonify(data)
@@ -54,5 +52,5 @@ class Transaction(Resource):
 		conn.close()
 	
 
-api.add_resource(Transaction,"/transaction/<string:Date>")
+api.add_resource(Transaction,"/transaction/<string:Employee>")
 app.run(debug=True) 
