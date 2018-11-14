@@ -40,7 +40,7 @@ class Transaction(Resource):
 			d = Date
 			#d = '1-16-17'
 			d = d.replace('-','/') + ' 0:00'
-			cursor.execute("select * from transactions where fraud_trans_flag is not null and `Transaction Date` = '%s';" % d)
+			cursor.execute("select * from transactions where fraud_trans_flag is not null and `Transaction Date` = '%s' order by Employee asc;" % d)
 			
 			row_headers = [x[0] for x in cursor.description] #extract row headers
 			data = cursor.fetchall()

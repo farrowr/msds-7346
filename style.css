@@ -1,5 +1,4 @@
 #root {
-	max-width: 1200px;
 	margin: 0 auto;
 }
 
@@ -16,11 +15,19 @@ table, th, td {
     border: 1px solid black;
 }
 
+label {
+	font-family: arial;
+    font-size: 9pt;
+}
+
 th, td {
     padding: 1px;
     text-align: left;
-    font-family: verdana;
+    font-family: courier;
     font-size: 8pt;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
 
