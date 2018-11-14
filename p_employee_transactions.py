@@ -38,7 +38,7 @@ class Transaction(Resource):
 		
 		try:
 			#test with Popola, Denise D
-			cursor.execute("select * from transactions where Employee like '%s';" % Employee)
+			cursor.execute("select * from transactions where fraud_trans_flag is not null and Employee like '%s';" % Employee)
 			data = cursor.fetchall() 
 			if(cursor.rowcount > 0):
 				return jsonify(data)
