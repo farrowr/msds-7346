@@ -41,11 +41,22 @@ class Transaction(Resource):
 			#d = '1-16-17'
 			d = d.replace('-','/') + ' 0:00'
 			cursor.execute("select * from transactions where fraud_trans_flag is not null and `Transaction Date` = '%s';" % d)
-			data = cursor.fetchall() 
-			if(cursor.rowcount > 0):
-				return jsonify(data)
-			else:
-				return "Employee not found", 404
+			
+			row_headers = [x[0] for x in cursor.description] #extract row headers
+			data = cursor.fetchall()
+
+			json_data = []
+			for result in data:
+				json_data.append(dict(zip(row_headers,result)))
+				#json_data.append("data")
+			#	json_data.append(dict(zip(row_headers,result)))
+			#return json.dumps(json_data)
+			return jsonify(json_data)
+
+			#if(cursor.rowcount > 0):
+			#	return jsonify(data)
+			#else:
+			#	return "Employee not found", 404
 
 		except Exception as e:
 			print(e)
