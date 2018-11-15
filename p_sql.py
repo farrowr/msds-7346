@@ -21,8 +21,8 @@ database_password = 'Adin2015'
 database_ip		  = 'localhost:3306'
 database_name 	  = 'reports'
 
-#database_connection = sqlal.create_engine('mysql://root:Adin2015@localhost:3306/reports')
-database_connection = sqlal.create_engine('mysql://{0}:{1}@{2}/{3}'.
-	format(database_username,database_password,database_ip,database_name))
+database_connection = sqlal.create_engine('mysql://root:Adin2015@localhost:3306/reports')
+#database_connection = sqlal.create_engine('mysql://{0}:{1}@{2}/{3}'.
+#	format(database_username,database_password,database_ip,database_name))
 df.to_sql(con=database_connection,name='transactions',if_exists='replace') #TODO replace
 

@@ -25,7 +25,7 @@ request.onload = function(){
 	if(localStorage.getItem('expenseReportDateKey') != null && localStorage.getItem('expenseReportDateKey') != ''){
 		document.getElementById("date").value = localStorage.getItem('expenseReportDateKey');
 	} else {
-		document.getElementById("date").value = 'mm/dd/yy';
+		document.getElementById("date").value = 'e.g. Jan 17, 2017';
 	}
 	//console.log(this.response);
 	//accessing JSON here
@@ -88,7 +88,7 @@ request.onload = function(){
 function myFunction() {
     
  	var date = document.getElementById("date").value;
- 	date = date.replace('/','-')
+ 	//date = date.replace('/','-')
  	localStorage.setItem("expenseReportDateKey", date);
  	location.reload()
 

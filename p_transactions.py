@@ -38,8 +38,8 @@ class Transaction(Resource):
 		
 		try:
 			d = Date
-			#d = '1-16-17'
-			d = d.replace('-','/') + ' 0:00'
+			#d = 'Jan 17, 2017'
+			d = d.replace('-','/') + ' 12:00:00 AM'
 			cursor.execute("select * from transactions where fraud_trans_flag is not null and `Transaction Date` = '%s' order by Employee asc;" % d)
 			
 			row_headers = [x[0] for x in cursor.description] #extract row headers
@@ -67,3 +67,4 @@ class Transaction(Resource):
 
 api.add_resource(Transaction,"/transaction/<string:Date>")
 app.run(debug=True) 
+#app.run(host='47.187.98.217', port=1000)

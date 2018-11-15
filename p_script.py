@@ -8,6 +8,8 @@ start_time = datetime.datetime.now()
 
 df = pandas.read_csv('Transaction List - Small.csv',sep=',',delimiter=None,header='infer')
 bu = pandas.read_csv('Business Unit by Cardholder.csv',sep=',',delimiter=None,header='infer')
+
+
 df["Fraud_Trans_Flag"] = None
 validated_employees = []
 same_name_employees = []
